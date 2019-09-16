@@ -10,7 +10,6 @@ const initState = {
 const currentConditions = (state = initState, action) => {
 switch (action.type) {
     case types.CURRENT_CITY:
-        console.log('action', action)
         return {
             ...state,
             currentCity: action.payload

@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import * as current from '../actions';
+import * as vars from '../vars';
 
 import FavoritesButton from './FavoritesButton';
 import Loading from './Loading';
@@ -11,11 +12,9 @@ import ErrorMessage from './ErrorMessage';
 const Weather = ({match}) => {
 
     const DEFAULT_CITY = "215854"; //Tel Aviv
-    const API_KEY = process.env.REACT_APP_API_KEY;
     const cityKey = match.params.cityKey ? match.params.cityKey : DEFAULT_CITY;
+    
     const dispatch = useDispatch();
-
-    const CURRENT_CONDITION_API = `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${API_KEY}`;
     
     let isFavorites = useSelector(state => state.favorites.find(favCity => favCity.key === cityKey));
     let currentConditions = useSelector(state => state.currentConditions);
@@ -23,7 +22,7 @@ const Weather = ({match}) => {
 
     const fetchCurrentData = () => {
       dispatch(current.fetchCurrentPending());
-      axios.get(CURRENT_CONDITION_API)
+      axios.get(vars.CURRENT_CONDITION_API(cityKey))
       .then((response) => {
         // handle success
         dispatch(current.fetchCurrentSuccess(response));
@@ -56,7 +55,7 @@ const Weather = ({match}) => {
       let weatherText = null;
       let temperature = null;
       if (currentConditions.data.data) {
-        weatherData = currentConditions.data.data[0];
+        weatherData = currentConditions.data.data;
         weatherText = weatherData.WeatherText;
         temperature = weatherData.Temperature.Metric.Value
       }

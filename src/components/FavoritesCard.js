@@ -3,21 +3,19 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as current from '../actions';
+import * as vars from '../vars';
+
 
 const FavoritesCard = props => {
 
     const city = props.city;
-
-    const API_KEY = process.env.REACT_APP_API_KEY;
     const dispatch = useDispatch();
-
-    const CURRENT_CONDITION_API = `http://dataservice.accuweather.com/currentconditions/v1/${city.key}?apikey=${API_KEY}`;
 
     let currentConditions = useSelector(state => state.currentConditions);
 
     const fetchCurrentData = () => {
       dispatch(current.fetchCurrentPending());
-      axios.get(CURRENT_CONDITION_API)
+      axios.get(vars.CURRENT_CONDITION_API(city.key))
       .then((response) => {
         // handle success
         dispatch(current.fetchCurrentSuccess(response));

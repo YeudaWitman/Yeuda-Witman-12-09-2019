@@ -2,11 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchAction, suggestionAction, errorAction, currentCity } from '../actions';
+import * as vars from '../vars';
 import SuggestionItem from './SuggestionItem';
 
 const Search = () => {
-    const API_KEY = process.env.REACT_APP_API_KEY;
-    const AUTOCOMPLETE_API = "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey="+API_KEY+"&q=";
 
     const dispatch = useDispatch();
     let suggestionResults = useSelector(state => state.search.suggestion);
@@ -18,7 +17,7 @@ const Search = () => {
             dispatch(suggestionAction([]));
             return;
         }
-        axios.get(AUTOCOMPLETE_API)
+        axios.get(vars.AUTOCOMPLETE_API)
         .then((response) => {
             // handle success
             dispatch(suggestionAction(response.data));
