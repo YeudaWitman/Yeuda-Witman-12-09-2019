@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Yeuda-Witman-12-09-2019/precache-manifest.88bac5cac94495101ed2ab0dfe9d4837.js"
+  "/Yeuda-Witman-12-09-2019/precache-manifest.cbcd1f917da97bac2d0ca51bcd678b07.js"
 );
 
 self.addEventListener('message', (event) => {

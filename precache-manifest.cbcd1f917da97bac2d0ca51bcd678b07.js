@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "522173ecb899572fc9992e4c8709915b",
+    "revision": "4da8657d3aba3fa2adb80e981b88fb11",
     "url": "/Yeuda-Witman-12-09-2019/index.html"
   },
   {
-    "revision": "0e43b8b9f2a9db406ac4",
+    "revision": "18f5fc1e89ca2f88f4ea",
     "url": "/Yeuda-Witman-12-09-2019/static/css/main.34de6062.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Yeuda-Witman-12-09-2019/static/js/2.65c52504.chunk.js"
   },
   {
-    "revision": "0e43b8b9f2a9db406ac4",
-    "url": "/Yeuda-Witman-12-09-2019/static/js/main.26f04f27.chunk.js"
+    "revision": "18f5fc1e89ca2f88f4ea",
+    "url": "/Yeuda-Witman-12-09-2019/static/js/main.81d40c1d.chunk.js"
   },
   {
     "revision": "95280991d074a41fb378",
