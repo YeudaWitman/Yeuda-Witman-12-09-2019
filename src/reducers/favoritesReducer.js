@@ -1,9 +1,11 @@
+import * as types from '../actions/types';
+
 const FAV = 'favorites';
 const initState = JSON.parse(localStorage.getItem(FAV)) ? JSON.parse(localStorage.getItem(FAV)) : [];
 
 const favorites = (state = initState, action) => {
     switch (action.type) {
-        case 'ADD':
+        case types.ADD:
             console.log(action)
             if (state.includes(action.payload)) {
                 return state; 
@@ -15,7 +17,7 @@ const favorites = (state = initState, action) => {
             favs.push(action.payload);
             localStorage.setItem(FAV, JSON.stringify(favs));
             return [...state, action.payload];
-        case 'REMOVE':
+        case types.REMOVE:
             let arr = state;
             let index = arr.indexOf(action.payload);
             arr.splice(index, 1);

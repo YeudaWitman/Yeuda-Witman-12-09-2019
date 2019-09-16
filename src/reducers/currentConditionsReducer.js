@@ -1,7 +1,7 @@
 import * as types from '../actions/types';
 
 const initState = {
-    currentCity: { key: 215854, name: "Tel Aviv", country: "Israel"},
+    currentCity: { key: "215854", name: "Tel Aviv", country: "Israel"},
     pending: false,
     data: [],
     error: null

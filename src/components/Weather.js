@@ -9,7 +9,6 @@ import FavoritesButton from './FavoritesButton';
 import Loading from './Loading';
 import FiveDaysForecast from './FiveDaysForecast';
 import ErrorMessage from './ErrorMessage';
-import { CURRENT_CONDITION_ERROR } from '../actions/types';
 
 const Weather = ({match}) => {
 
@@ -28,8 +27,8 @@ const Weather = ({match}) => {
 
     const fetchCurrentData = () => {
       dispatch(current.fetchCurrentPending());
-      axios.get(CURRENT_CONDITION_API)
-      // axios.get(TEST_API)
+      // axios.get(CURRENT_CONDITION_API)
+      axios.get(TEST_API)
       .then((response) => {
         // handle success
         dispatch(current.fetchCurrentSuccess(response));

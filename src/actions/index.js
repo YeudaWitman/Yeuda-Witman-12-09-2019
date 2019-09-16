@@ -41,6 +41,12 @@ export const removeFromFavorites = (payload) => {
         payload
     }
 }
+export const addConditionToFavorites = (payload) => {
+    return {
+        type: types.ADD_CURRENT_CONDITION,
+        payload
+    }
+}
 
 export const fetchCurrentPending = () => {
     return {
