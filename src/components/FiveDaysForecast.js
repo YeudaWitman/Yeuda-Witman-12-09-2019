@@ -26,9 +26,6 @@ const FiveDaysForecast = props => {
             // handle error
             dispatch(fiveDays.fetchFiveDaysError(error));
         })
-        .finally( () => {
-            // always executed
-        });
     }
 
     React.useEffect(

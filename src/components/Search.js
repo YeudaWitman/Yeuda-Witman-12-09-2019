@@ -26,9 +26,6 @@ const Search = () => {
             // handle error
             dispatch(errorAction(error));
         })
-        .finally( () => {
-            // always executed
-        });
     }
       
     const resetInput = (city) => {

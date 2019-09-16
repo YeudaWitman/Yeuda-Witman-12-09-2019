@@ -24,9 +24,6 @@ const FavoritesCard = props => {
         // handle error
         dispatch(current.fetchCurrentError(error));
       })
-      .finally( () => {
-        // always executed
-      });
     }
   
       React.useEffect(

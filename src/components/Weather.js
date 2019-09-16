@@ -17,6 +17,7 @@ const Weather = ({match}) => {
     const dispatch = useDispatch();
     
     let isFavorites = useSelector(state => state.favorites.find(favCity => favCity.key === cityKey));
+
     let currentConditions = useSelector(state => state.currentConditions);
     let currentCity = useSelector(state => state.currentConditions.currentCity);
 
@@ -31,9 +32,6 @@ const Weather = ({match}) => {
         // handle error
         dispatch(current.fetchCurrentError(error));
       })
-      .finally( () => {
-        // always executed
-      });
     }
 
 
