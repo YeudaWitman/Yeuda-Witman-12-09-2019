@@ -50,6 +50,11 @@ const FavoritesCard = props => {
         )
     }
     if (currentConditions.data) {
+        let temperature = null;
+        if (currentConditions.data.data) {
+            console.log(currentConditions.data.data.Temperature)
+            temperature = currentConditions.data.data.Temperature.Metric.Value;
+        }
         return (
             <Link to={`/weather/${city.key}`} >
                 <div className="col-sm mt-1">
@@ -60,7 +65,7 @@ const FavoritesCard = props => {
                             <h6 className="card-title">{city.country}</h6>
                         </div>
                         <div className="card-body">
-                            <h2 className="card-title">10&#176;</h2>
+                            <h2 className="card-title">{temperature} &#176;</h2>
                         </div>
                         <div className="card-footer">
                         </div>

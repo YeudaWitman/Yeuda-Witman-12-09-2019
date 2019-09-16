@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Navbar />
         <Main />
     </BrowserRouter>
