@@ -14,21 +14,18 @@ const FiveDaysForecast = props => {
     const dispatch = useDispatch();
 
     const FIVE_DAYS_FORECAST = `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=${API_KEY}&metric=true`;
-    const TEST_API2 = "https://my-json-server.typicode.com/YeudaWitman/mockdata2/db";
     let fiveDaysData = useSelector(state => state.fiveDays);
 
 
     const fetchFiveDaysForeCast = () => {
         dispatch(fiveDays.fetchFiveDaysPending());
-        // axios.get(FIVE_DAYS_FORECAST)
-        axios.get(TEST_API2)
+        axios.get(FIVE_DAYS_FORECAST)
         .then((response) => {
             // handle success
             dispatch(fiveDays.fetchFiveDaysSuccess(response.data.DailyForecasts));
         })
         .catch((error) => {
             // handle error
-            console.log('error', error)
             dispatch(fiveDays.fetchFiveDaysError(error));
         })
         .finally( () => {
@@ -39,7 +36,7 @@ const FiveDaysForecast = props => {
     React.useEffect(
         () => {
           fetchFiveDaysForeCast();
-        }, [useDispatch]
+        }, []
       )
       
     if (fiveDaysData.error) {

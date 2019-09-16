@@ -12,14 +12,12 @@ const FavoritesCard = props => {
     const dispatch = useDispatch();
 
     const CURRENT_CONDITION_API = `http://dataservice.accuweather.com/currentconditions/v1/${city.key}?apikey=${API_KEY}`;
-    const TEST_API = "https://my-json-server.typicode.com/YeudaWitman/mockdata/res";
 
     let currentConditions = useSelector(state => state.currentConditions);
 
     const fetchCurrentData = () => {
       dispatch(current.fetchCurrentPending());
-      // axios.get(CURRENT_CONDITION_API)
-      axios.get(TEST_API)
+      axios.get(CURRENT_CONDITION_API)
       .then((response) => {
         // handle success
         dispatch(current.fetchCurrentSuccess(response));

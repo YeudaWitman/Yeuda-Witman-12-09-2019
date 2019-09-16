@@ -15,7 +15,7 @@ const Main = () => {
             <Route exact path="/weather" component={Weather} />
             <Route exact path="/weather/:cityKey" component={Weather} />
             <Route exact path="/favorites" component={Favorites} />
-            <Route path="/" component={NotFound} />
+            <Route component={NotFound} />
         </Switch>
         </div>
     )

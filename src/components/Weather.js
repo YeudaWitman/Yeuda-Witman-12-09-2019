@@ -2,8 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import * as current from '../actions';
- 
-import weatherData from './currentconditions.json';
+
 import FavoritesButton from './FavoritesButton';
 import Loading from './Loading';
 import FiveDaysForecast from './FiveDaysForecast';
@@ -17,7 +16,6 @@ const Weather = ({match}) => {
     const dispatch = useDispatch();
 
     const CURRENT_CONDITION_API = `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${API_KEY}`;
-    const TEST_API = "https://my-json-server.typicode.com/YeudaWitman/mockdata/res";
     
     let isFavorites = useSelector(state => state.favorites.find(favCity => favCity.key === cityKey));
     let currentConditions = useSelector(state => state.currentConditions);
@@ -25,8 +23,7 @@ const Weather = ({match}) => {
 
     const fetchCurrentData = () => {
       dispatch(current.fetchCurrentPending());
-      // axios.get(CURRENT_CONDITION_API)
-      axios.get(TEST_API)
+      axios.get(CURRENT_CONDITION_API)
       .then((response) => {
         // handle success
         dispatch(current.fetchCurrentSuccess(response));
@@ -46,7 +43,7 @@ const Weather = ({match}) => {
         fetchCurrentData();
       }, []
     )
-    
+
     if (currentConditions.error) {
       return <ErrorMessage error={currentConditions.error} />
     }
@@ -55,7 +52,15 @@ const Weather = ({match}) => {
       return <Loading />
     }
     if (currentConditions.data) {
-
+      let weatherData = null;
+      let weatherText = null;
+      let temperature = null;
+      if (currentConditions.data.data) {
+        weatherData = currentConditions.data.data[0];
+        weatherText = weatherData.WeatherText;
+        temperature = weatherData.Temperature.Metric.Value
+      }
+      
       return (
         <div>
           <div className="alert alert-info mt-4 text-center" role="alert">
@@ -70,9 +75,9 @@ const Weather = ({match}) => {
               <FavoritesButton cityDetails={currentCity} />
             </nav>
             <h1>
-              <i className="fas fa-thermometer-half"></i> {weatherData.Temperature.Metric.Value}&#176;
+              <i className="fas fa-thermometer-half"></i> {temperature}&#176;
             </h1>
-            <h3>{weatherData.WeatherText}</h3>
+            <h3>{weatherText}</h3>
           </div>
           <FiveDaysForecast cityKey={cityKey}/>
         </div>

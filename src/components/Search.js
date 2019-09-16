@@ -7,7 +7,6 @@ import SuggestionItem from './SuggestionItem';
 const Search = () => {
     const API_KEY = process.env.REACT_APP_API_KEY;
     const AUTOCOMPLETE_API = "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey="+API_KEY+"&q=";
-    const urlTest = "https://my-json-server.typicode.com/YeudaWitman/mockdata/res";
 
     const dispatch = useDispatch();
     let suggestionResults = useSelector(state => state.search.suggestion);
@@ -19,7 +18,7 @@ const Search = () => {
             dispatch(suggestionAction([]));
             return;
         }
-        axios.get(urlTest)
+        axios.get(AUTOCOMPLETE_API)
         .then((response) => {
             // handle success
             dispatch(suggestionAction(response.data));
@@ -65,4 +64,4 @@ const Search = () => {
     )
 }
 
-export default Search
+export default Search;
