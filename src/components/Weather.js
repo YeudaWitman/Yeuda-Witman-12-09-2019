@@ -4,7 +4,6 @@ import axios from 'axios';
 import * as current from '../actions';
  
 import weatherData from './currentconditions.json';
-import dataByLocation from './searchByLocation.json';
 import FavoritesButton from './FavoritesButton';
 import Loading from './Loading';
 import FiveDaysForecast from './FiveDaysForecast';
@@ -18,7 +17,6 @@ const Weather = ({match}) => {
     const dispatch = useDispatch();
 
     const CURRENT_CONDITION_API = `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${API_KEY}`;
-    const DETAILS_BY_LOCATION = `http://dataservice.accuweather.com/locations/v1/${cityKey}?apikey=${API_KEY}`;
     const TEST_API = "https://my-json-server.typicode.com/YeudaWitman/mockdata/res";
     
     let isFavorites = useSelector(state => state.favorites.find(favCity => favCity.key === cityKey));
@@ -48,6 +46,7 @@ const Weather = ({match}) => {
         fetchCurrentData();
       }, []
     )
+    
     if (currentConditions.error) {
       return <ErrorMessage error={currentConditions.error} />
     }

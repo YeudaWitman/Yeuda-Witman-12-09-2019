@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites } from '../actions';
 
 const FavoritesButton = props => {
-    console.log(props)
     let city = props.cityDetails;
     const dispatch = useDispatch();
     let isFavorites = useSelector(state => state.favorites.find(favCity => favCity.key === city.key));
-    console.log(isFavorites)
+
     const handleAddToFavorites = (city) => {
         dispatch(addToFavorites(city));
     }

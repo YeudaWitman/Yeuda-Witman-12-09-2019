@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as current from '../actions';
-import ErrorMessage from './ErrorMessage';
 
 const FavoritesCard = props => {
 
@@ -37,12 +36,10 @@ const FavoritesCard = props => {
       React.useEffect(
         () => {
           fetchCurrentData();
-          console.log(city);
         }, []
       )
 
     if (currentConditions.error) {
-        console.log(currentConditions)
         return (
             <div className="col-sm mt-1">
                 <div className="card text-center border-danger">
@@ -60,7 +57,6 @@ const FavoritesCard = props => {
         )
     }
     if (currentConditions.data) {
-        console.log(currentConditions)
         return (
             <Link to={`/weather/${city.key}`} >
                 <div className="col-sm mt-1">

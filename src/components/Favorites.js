@@ -5,7 +5,7 @@ import FavoritesCard from './FavoritesCard';
 const Favorites = () => {
 
     let favorites = useSelector(state => state.favorites);
-    console.log(favorites)
+
     let favs = favorites.map((fav, i) => <FavoritesCard key={i} city={fav} />)
     
     return (

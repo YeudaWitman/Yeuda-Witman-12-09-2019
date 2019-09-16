@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SuggestionItem = props => {
+
     let details = props.details;
-    console.log(details)
+
     let selectedDetails = {
         key: details.Key,
         name: details.LocalizedName,
